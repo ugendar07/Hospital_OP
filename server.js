@@ -5,7 +5,10 @@ const fs = require('fs');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const DATABASE_FILE = path.join(__dirname, 'database.json');
+// On Vercel, the filesystem is read-only except for /tmp
+const DATABASE_FILE = process.env.VERCEL 
+    ? path.join('/tmp', 'database.json') 
+    : path.join(__dirname, 'database.json');
 
 // Middleware
 app.use(cors());
@@ -113,7 +116,12 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'op.html'));
 });
 
-// Start the server
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-});
+// Start the server (only locally)
+if (require.main === module) {
+    app.listen(PORT, () => {
+        console.log(`Server is running on http://localhost:${PORT}`);
+    });
+}
+
+// Export the Express API for Vercel Serverless
+module.exports = app;
