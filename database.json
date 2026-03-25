@@ -1,0 +1,28 @@
+{
+  "appointments": [
+    {
+      "patientName": "K Ugi",
+      "patientEmail": "monster@mar.com",
+      "patientPhone": "98798889",
+      "department": "neurology",
+      "doctor": "Dr. Miller Davis (Neurology)",
+      "appointmentDate": "2026-03-25",
+      "appointmentTime": "12:00 PM - 1:00 PM",
+      "symptoms": "xyz",
+      "appointmentId": "MC-388143",
+      "createdAt": "2026-03-25T04:29:46.707Z"
+    },
+    {
+      "patientName": "Ch Bindu ",
+      "patientEmail": "psychopath@org.in",
+      "patientPhone": "98798889",
+      "department": "neurology",
+      "doctor": "Dr. Miller Davis (Neurology)",
+      "appointmentDate": "2026-03-25",
+      "appointmentTime": "2:00 PM - 3:00 PM",
+      "symptoms": "xyz",
+      "appointmentId": "MC-574862",
+      "createdAt": "2026-03-25T04:31:31.654Z"
+    }
+  ]
+}

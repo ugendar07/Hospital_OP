@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediCare Hospital - Patient Portal Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f9ff;
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1a6dbb, #0d4d8a);
+            color: white;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            background-color: white;
+            color: #1a6dbb;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo-text h1 {
+            font-size: 26px;
+            margin-bottom: 5px;
+        }
+
+        .logo-text p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .emergency-contact {
+            background-color: #ff6b6b;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .main-container {
+            display: flex;
+            flex: 1;
+            padding: 40px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-container {
+            display: flex;
+            width: 100%;
+            max-width: 1100px;
+            background-color: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .login-info {
+            flex: 1;
+            background: linear-gradient(135deg, #1a6dbb, #0d4d8a);
+            color: white;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .login-info h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .login-info p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .features {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .features li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .features i {
+            color: #5bc0de;
+            font-size: 18px;
+        }
+
+        .login-form-container {
+            flex: 1;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .login-form-container h2 {
+            color: #1a6dbb;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .login-form-container p {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #444;
+            font-weight: 500;
+        }
+
+        .input-with-icon {
+            position: relative;
+        }
+
+        .input-with-icon i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #777;
+        }
+
+        .input-with-icon input {
+            width: 100%;
+            padding: 15px 15px 15px 45px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+
+        .input-with-icon input:focus {
+            border-color: #1a6dbb;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(26, 109, 187, 0.2);
+        }
+
+        .options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .remember-me input {
+            width: 18px;
+            height: 18px;
+        }
+
+        .forgot-password {
+            color: #1a6dbb;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+        .login-btn {
+            background: linear-gradient(135deg, #1a6dbb, #0d4d8a);
+            color: white;
+            border: none;
+            padding: 16px;
+            width: 100%;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-bottom: 25px;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(26, 109, 187, 0.3);
+        }
+
+        .divider {
+            text-align: center;
+            position: relative;
+            margin: 20px 0;
+            color: #888;
+        }
+
+        .divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background-color: #eee;
+            z-index: 1;
+        }
+
+        .divider span {
+            background-color: white;
+            padding: 0 15px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .alternative-login {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .alt-login-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: white;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .alt-login-btn:hover {
+            background-color: #f8f9fa;
+            transform: translateY(-2px);
+        }
+
+        .signup-link {
+            text-align: center;
+            color: #666;
+        }
+
+        .signup-link a {
+            color: #1a6dbb;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .signup-link a:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            text-align: center;
+            padding: 25px;
+            font-size: 14px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #bdc3c7;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .copyright {
+            opacity: 0.8;
+        }
+
+        /* Responsive design */
+        @media (max-width: 900px) {
+            .login-container {
+                flex-direction: column;
+                max-width: 600px;
+            }
+            
+            .login-info, .login-form-container {
+                padding: 40px;
+            }
+            
+            .main-container {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .header {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+            
+            .login-info, .login-form-container {
+                padding: 30px;
+            }
+            
+            .alternative-login {
+                flex-direction: column;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo-container">
+            <div class="logo">MH</div>
+            <div class="logo-text">
+                <h1>MediCare Hospital</h1>
+                <p>Patient Portal & Online Booking</p>
+            </div>
+        </div>
+        <div class="emergency-contact">
+            <i class="fas fa-phone-alt"></i>
+            <span>Emergency: 1-800-123-4567</span>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <div class="login-container">
+            <div class="login-info">
+                <h2>Welcome to Patient Portal</h2>
+                <p>Access your medical records, book appointments, view test results, and communicate with your healthcare providers—all in one secure place.</p>
+                <ul class="features">
+                    <li><i class="fas fa-calendar-check"></i> Book & manage appointments online</li>
+                    <li><i class="fas fa-file-medical"></i> Access your medical records & test results</li>
+                    <li><i class="fas fa-comments-medical"></i> Secure messaging with doctors</li>
+                    <li><i class="fas fa-prescription-bottle-alt"></i> Request prescription refills</li>
+                    <li><i class="fas fa-bell"></i> Receive appointment reminders</li>
+                </ul>
+            </div>
+            
+            <div class="login-form-container">
+                <h2>Patient Login</h2>
+                <p>Sign in to your account to access the patient portal</p>
+                
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="username">Username or Email</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="username" placeholder="Enter your username or email" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="password" placeholder="Enter your password" required>
+                        </div>
+                    </div>
+                    
+                    <div class="options">
+                        <div class="remember-me">
+                            <input type="checkbox" id="remember">
+                            <label for="remember">Remember me</label>
+                        </div>
+                        <a href="#" class="forgot-password">Forgot Password?</a>
+                    </div>
+                    
+                    <button type="submit" class="login-btn">Sign In to Patient Portal</button>
+                    
+                    <div class="divider">
+                        <span>Or sign in with</span>
+                    </div>
+                    
+                    <div class="alternative-login">
+                        <button type="button" class="alt-login-btn">
+                            <i class="fab fa-google" style="color: #DB4437;"></i>
+                            <span>Google</span>
+                        </button>
+                        <button type="button" class="alt-login-btn">
+                            <i class="fab fa-microsoft" style="color: #00A4EF;"></i>
+                            <span>Microsoft</span>
+                        </button>
+                    </div>
+                    
+                    <div class="signup-link">
+                        Don't have an account? <a href="#">Sign up for patient portal access</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Contact Us</a>
+            <a href="#">Help Center</a>
+            <a href="#">Accessibility</a>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 MediCare Hospital. All rights reserved. This is a secure system. Unauthorized access is prohibited.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            // Simple validation
+            if (!username || !password) {
+                alert('Please enter both username and password');
+                return;
+            }
+            
+            // In a real application, this would be an API call
+            // For demo purposes, we'll simulate a login process
+            const loginBtn = document.querySelector('.login-btn');
+            const originalText = loginBtn.textContent;
+            
+            loginBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Signing in...';
+            loginBtn.disabled = true;
+            
+            // Simulate API call delay
+            setTimeout(() => {
+                // Check for demo credentials
+                if ((username === 'demo@medicare.com' || username === 'patient') && password === 'demo123') {
+                    alert('Login successful! Redirecting to patient dashboard...');
+                    // In a real application, you would redirect to the dashboard
+                    // window.location.href = 'dashboard.html';
+                } else {
+                    alert('Invalid credentials. Please try again.\n\nDemo credentials:\nUsername: demo@medicare.com or patient\nPassword: demo123');
+                }
+                
+                loginBtn.textContent = originalText;
+                loginBtn.disabled = false;
+            }, 1500);
+        });
+        
+        // Alternative login buttons
+        document.querySelectorAll('.alt-login-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const provider = this.querySelector('span').textContent;
+                alert(`In a real application, this would redirect to ${provider} authentication.`);
+            });
+        });
+        
+        // Forgot password link
+        document.querySelector('.forgot-password').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('A password reset link would be sent to your registered email address.');
+        });
+        
+        // Sign up link
+        document.querySelector('.signup-link a').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Redirecting to patient portal registration page...');
+        });
+    </script>
+</body>
+</html>
